@@ -1870,7 +1870,7 @@ namespace FINAL_PRINCIPAL
             // Limpiar buffer
             while (Console.KeyAvailable) Console.ReadKey(true);
 
-            // Forzar fondo negro antes de limpiar para evitar el color plomo
+            // Forzar fondo negro antes de limpiar
             Console.BackgroundColor = ConsoleColor.Black;
 
             // 1. DIBUJAR LA INTERFAZ
@@ -1896,11 +1896,11 @@ namespace FINAL_PRINCIPAL
             Console.SetCursorPosition(55, 11); Console.Write("NRO BOLETA:");
             Console.SetCursorPosition(12, 13); Console.Write("CLIENTE:");
 
-            Console.SetCursorPosition(12, 16); Console.Write("CODIGO");
-            Console.SetCursorPosition(25, 16); Console.Write("PRODUCTOS");
-            Console.SetCursorPosition(45, 16); Console.Write("CANTIDAD");
-            Console.SetCursorPosition(60, 16); Console.Write("PRECIO UNI");
-            Console.SetCursorPosition(75, 16); Console.Write("MONTO");
+            Console.SetCursorPosition(12, 15); Console.Write("CODIGO");
+            Console.SetCursorPosition(25, 15); Console.Write("PRODUCTOS");
+            Console.SetCursorPosition(45, 15); Console.Write("CANTIDAD");
+            Console.SetCursorPosition(60, 15); Console.Write("PRECIO UNI");
+            Console.SetCursorPosition(75, 15); Console.Write("MONTO");
 
             Console.SetCursorPosition(12, 23); Console.Write("CODIGO VENDEDOR:");
             Console.SetCursorPosition(55, 23); Console.Write("TOTAL");
@@ -1911,7 +1911,7 @@ namespace FINAL_PRINCIPAL
             Console.SetCursorPosition(50, 26); Console.Write(" CANCELAR ");
             Console.ResetColor();
 
-            // Dibujar campos vacíos iniciales
+            
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.SetCursorPosition(25, 11); Console.Write(new string(' ', 20)); // DNI
             Console.SetCursorPosition(67, 11); Console.Write(new string(' ', 10)); // Nro Boleta
@@ -1920,22 +1920,18 @@ namespace FINAL_PRINCIPAL
             Console.SetCursorPosition(62, 23); Console.Write(new string(' ', 15)); // Total
             Console.ResetColor();
 
-            // ----------------------------------------------------
-            // LOGICA 1: NRO BOLETA (Con Escape)
-            // ----------------------------------------------------
+            
             string nroBoleta;
             do
             {
                 Console.BackgroundColor = ConsoleColor.Gray;
                 Console.ForegroundColor = ConsoleColor.Black;
-                Console.SetCursorPosition(67, 11); Console.Write("          "); // Limpiar visualmente
+                Console.SetCursorPosition(67, 11); Console.Write("          ");
 
-                // USAMOS LA NUEVA FUNCIÓN
                 nroBoleta = LeerInputConEscape(67, 11, 6);
                 Console.ResetColor();
 
-                // VERIFICAMOS SI PRESIONÓ ESCAPE
-                if (nroBoleta == null) return; // <--- ESTO TE SACA AL MENÚ ANTERIOR
+                if (nroBoleta == null) return;
 
                 if (nroBoleta.Length > 6)
                 {
@@ -1948,7 +1944,7 @@ namespace FINAL_PRINCIPAL
             } while (nroBoleta.Length > 6);
 
             // ----------------------------------------------------
-            // LOGICA 2: DNI CLIENTE (Con Escape)
+            // LOGICA 2: DNI CLIENTE
             // ----------------------------------------------------
             string dniBuscado;
             int indexCliente = -1;
@@ -1963,7 +1959,7 @@ namespace FINAL_PRINCIPAL
                 dniBuscado = LeerInputConEscape(25, 11, 8);
                 Console.ResetColor();
 
-                if (dniBuscado == null) return; // <--- SALIR SI PRESIONA ESCAPE
+                if (dniBuscado == null) return;
 
                 for (int i = 0; i < contadorClientes; i++)
                 {
@@ -1990,76 +1986,136 @@ namespace FINAL_PRINCIPAL
             } while (!clienteEncontrado);
 
             // ----------------------------------------------------
-            // LOGICA 3: PRODUCTO (Con Escape)
+            // LOGICA 3: AGREGAR PRODUCTOS (MÚLTIPLES)
             // ----------------------------------------------------
-            string nombreProd;
-            int indexProd = -1;
-            bool prodEncontrado = false;
+            double totalGeneral = 0;
+            int lineaProducto = 17; // Línea donde empiezan los productos
+            bool agregarOtro = true;
 
-            do
+            while (agregarOtro && lineaProducto <= 21) // Máximo 5 productos (líneas 17-21)
             {
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.SetCursorPosition(25, 18); Console.Write(new string(' ', 15));
+                string nombreProd;
+                int indexProd = -1;
+                bool prodEncontrado = false;
 
-                nombreProd = LeerInputConEscape(25, 18, 20);
-
-                if (nombreProd == null) return; // <--- SALIR SI PRESIONA ESCAPE
-
-                for (int i = 0; i < totalProductos; i++)
+                // Buscar producto
+                do
                 {
-                    if (nombres_producto[i] != null && nombres_producto[i].ToLower() == nombreProd.ToLower())
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(25, lineaProducto); Console.Write(new string(' ', 15));
+
+                    nombreProd = LeerInputConEscape(25, lineaProducto, 20);
+
+                    if (nombreProd == null) return; // ESC cancela toda la boleta
+
+                    for (int i = 0; i < totalProductos; i++)
                     {
-                        indexProd = i;
-                        prodEncontrado = true;
-                        Console.SetCursorPosition(12, 18); Console.Write(codigos_producto[i]);
-                        Console.SetCursorPosition(60, 18); Console.Write(precios_producto[i].ToString("0.00"));
-                        break;
+                        if (nombres_producto[i] != null && nombres_producto[i].ToLower() == nombreProd.ToLower())
+                        {
+                            indexProd = i;
+                            prodEncontrado = true;
+                            Console.SetCursorPosition(12, lineaProducto); Console.Write(codigos_producto[i]);
+                            Console.SetCursorPosition(60, lineaProducto); Console.Write(precios_producto[i].ToString("0.00"));
+                            break;
+                        }
                     }
-                }
-                if (!prodEncontrado)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.SetCursorPosition(10, 27); Console.Write("Error: Producto no existe.");
-                    Console.ReadKey();
-                    Console.SetCursorPosition(10, 27); Console.Write(new string(' ', 60));
-                }
-            } while (!prodEncontrado);
-
-            // --- Cantidad ---
-            int cantidad = 0;
-            bool stockSuficiente = false;
-            do
-            {
-                Console.SetCursorPosition(45, 18); Console.Write("    ");
-                string cantTexto = LeerInputConEscape(45, 18, 5);
-
-                if (cantTexto == null) return; // <--- SALIR SI PRESIONA ESCAPE
-
-                if (int.TryParse(cantTexto, out cantidad) && cantidad > 0)
-                {
-                    if (cantidad <= stocks_producto[indexProd]) stockSuficiente = true;
-                    else
+                    if (!prodEncontrado)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.SetCursorPosition(10, 27); Console.Write($"Stock insuficiente ({stocks_producto[indexProd]}).");
+                        Console.SetCursorPosition(10, 27); Console.Write("Error: Producto no existe.");
                         Console.ReadKey();
                         Console.SetCursorPosition(10, 27); Console.Write(new string(' ', 60));
                     }
+                } while (!prodEncontrado);
+
+                // Pedir cantidad
+                int cantidad = 0;
+                bool stockSuficiente = false;
+                do
+                {
+                    Console.SetCursorPosition(45, lineaProducto); Console.Write("    ");
+                    string cantTexto = LeerInputConEscape(45, lineaProducto, 5);
+
+                    if (cantTexto == null) return;
+
+                    if (int.TryParse(cantTexto, out cantidad) && cantidad > 0)
+                    {
+                        if (cantidad <= stocks_producto[indexProd])
+                            stockSuficiente = true;
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.SetCursorPosition(10, 27);
+                            Console.Write($"Stock insuficiente (disponible: {stocks_producto[indexProd]}).");
+                            Console.ReadKey();
+                            Console.SetCursorPosition(10, 27); Console.Write(new string(' ', 60));
+                        }
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.SetCursorPosition(10, 27); Console.Write("Error: Ingrese una cantidad válida.");
+                        Console.ReadKey();
+                        Console.SetCursorPosition(10, 27); Console.Write(new string(' ', 60));
+                    }
+                } while (!stockSuficiente);
+
+                // Calcular monto del producto
+                double montoProducto = cantidad * precios_producto[indexProd];
+                Console.SetCursorPosition(75, lineaProducto); Console.Write(montoProducto.ToString("0.00"));
+
+                // Sumar al total general
+                totalGeneral += montoProducto;
+
+                // Actualizar total en pantalla
+                Console.BackgroundColor = ConsoleColor.Gray;
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.SetCursorPosition(62, 23); Console.Write((" S/ " + totalGeneral.ToString("0.00")).PadRight(15));
+                Console.ResetColor();
+
+                // Preguntar si desea agregar otro producto
+                lineaProducto++;
+
+                if (lineaProducto <= 21) // Solo preguntar si hay espacio para más productos
+                {
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.SetCursorPosition(10, 27);
+                    Console.Write("¿Desea agregar otro producto? (S/N): ");
+                    Console.ResetColor();
+
+                    ConsoleKeyInfo respuesta = Console.ReadKey(true);
+                    Console.SetCursorPosition(10, 27); Console.Write(new string(' ', 60));
+
+                    if (respuesta.Key == ConsoleKey.Escape)
+                    {
+                        return; // ESC cancela
+                    }
+
+                    if (respuesta.KeyChar == 's' || respuesta.KeyChar == 'S')
+                    {
+                        agregarOtro = true;
+                    }
+                    else
+                    {
+                        agregarOtro = false;
+                    }
                 }
-            } while (!stockSuficiente);
-
-            // Cálculos
-            double totalMonto = cantidad * precios_producto[indexProd];
-            Console.SetCursorPosition(75, 18); Console.Write(totalMonto.ToString("0.00"));
-
-            Console.BackgroundColor = ConsoleColor.Gray;
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.SetCursorPosition(62, 23); Console.Write((" S/ " + totalMonto.ToString("0.00")).PadRight(15));
-            Console.ResetColor();
+                else
+                {
+                    agregarOtro = false; // No hay más espacio
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.SetCursorPosition(10, 27);
+                    Console.Write("Máximo 5 productos alcanzado.");
+                    Console.ReadKey();
+                    Console.SetCursorPosition(10, 27); Console.Write(new string(' ', 60));
+                }
+            }
 
             // ----------------------------------------------------
-            // LOGICA 4: VENDEDOR (Con Escape)
+            // LOGICA 4: VENDEDOR
             // ----------------------------------------------------
             string codVendedor;
             bool vendedorEncontrado = false;
@@ -2072,7 +2128,7 @@ namespace FINAL_PRINCIPAL
                 codVendedor = LeerInputConEscape(29, 23, 11);
                 Console.ResetColor();
 
-                if (codVendedor == null) return; // <--- SALIR SI PRESIONA ESCAPE
+                if (codVendedor == null) return;
 
                 for (int i = 0; i < total; i++)
                 {
@@ -2092,10 +2148,11 @@ namespace FINAL_PRINCIPAL
                 }
             } while (!vendedorEncontrado);
 
-            // FIN
+            // FIN - Venta registrada
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.SetCursorPosition(10, 27); Console.Write("¡Venta registrada! (Presione tecla)");
+            Console.SetCursorPosition(10, 27);
+            Console.Write("¡Venta registrada exitosamente! Total: S/ " + totalGeneral.ToString("0.00") + " (Presione tecla)");
             Console.ReadKey();
             Console.ResetColor();
         }

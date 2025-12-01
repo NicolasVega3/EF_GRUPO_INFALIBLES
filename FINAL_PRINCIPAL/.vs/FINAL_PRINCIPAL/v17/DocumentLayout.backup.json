@@ -1,18 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\USUARIO\\Desktop\\EF_GRUPOTELETUBBIES\\FINAL_PRINCIPAL\\",
+  "WorkspaceRootPath": "C:\\Users\\USUARIO\\Desktop\\FINAL_EQUIPO_CARI\u00D1OSITOS\\FINAL_PRINCIPAL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{02EDA654-C20F-4D11-A93A-1F79E3B29A5A}|FINAL_PRINCIPAL.csproj|c:\\users\\usuario\\desktop\\ef_grupoteletubbies\\final_principal\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{02EDA654-C20F-4D11-A93A-1F79E3B29A5A}|FINAL_PRINCIPAL.csproj|c:\\users\\usuario\\desktop\\final_equipo_cari\u00F1ositos\\final_principal\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02EDA654-C20F-4D11-A93A-1F79E3B29A5A}|FINAL_PRINCIPAL.csproj|solutionrelative:class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02EDA654-C20F-4D11-A93A-1F79E3B29A5A}|FINAL_PRINCIPAL.csproj|C:\\Users\\USUARIO\\Desktop\\FINAL_EQUIPO_CARI\u00D1OSITOS\\FINAL_PRINCIPAL\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{02EDA654-C20F-4D11-A93A-1F79E3B29A5A}|FINAL_PRINCIPAL.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02EDA654-C20F-4D11-A93A-1F79E3B29A5A}|FINAL_PRINCIPAL.csproj|c:\\users\\usuario\\desktop\\ef_grupoteletubbies\\final_principal\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{02EDA654-C20F-4D11-A93A-1F79E3B29A5A}|FINAL_PRINCIPAL.csproj|C:\\Users\\USUARIO\\Desktop\\FINAL_EQUIPO_CARI\u00D1OSITOS\\FINAL_PRINCIPAL\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{02EDA654-C20F-4D11-A93A-1F79E3B29A5A}|FINAL_PRINCIPAL.csproj|solutionrelative:menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02EDA654-C20F-4D11-A93A-1F79E3B29A5A}|FINAL_PRINCIPAL.csproj|c:\\users\\usuario\\desktop\\ef_grupoteletubbies\\final_principal\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02EDA654-C20F-4D11-A93A-1F79E3B29A5A}|FINAL_PRINCIPAL.csproj|solutionrelative:class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,46 +22,44 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "menu.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\EF_GRUPOTELETUBBIES\\FINAL_PRINCIPAL\\menu.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\FINAL_EQUIPO_CARI\u00D1OSITOS\\FINAL_PRINCIPAL\\menu.cs",
               "RelativeDocumentMoniker": "menu.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\EF_GRUPOTELETUBBIES\\FINAL_PRINCIPAL\\menu.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\FINAL_EQUIPO_CARI\u00D1OSITOS\\FINAL_PRINCIPAL\\menu.cs",
               "RelativeToolTip": "menu.cs",
               "ViewState": "AgIAAC8AAAAAAAAAAAAQwDQIAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T21:27:23.705Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T21:27:23.705Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\EF_GRUPOTELETUBBIES\\FINAL_PRINCIPAL\\Class1.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\FINAL_EQUIPO_CARI\u00D1OSITOS\\FINAL_PRINCIPAL\\Class1.cs",
               "RelativeDocumentMoniker": "Class1.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\EF_GRUPOTELETUBBIES\\FINAL_PRINCIPAL\\Class1.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\FINAL_EQUIPO_CARI\u00D1OSITOS\\FINAL_PRINCIPAL\\Class1.cs",
               "RelativeToolTip": "Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAL0AAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAG4BAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-30T21:25:35.594Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\EF_GRUPOTELETUBBIES\\FINAL_PRINCIPAL\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\FINAL_EQUIPO_CARI\u00D1OSITOS\\FINAL_PRINCIPAL\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\EF_GRUPOTELETUBBIES\\FINAL_PRINCIPAL\\Program.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\FINAL_EQUIPO_CARI\u00D1OSITOS\\FINAL_PRINCIPAL\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T21:23:55.042Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T21:23:55.042Z"
             }
           ]
         }
